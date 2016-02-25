@@ -1,15 +1,8 @@
 {
   "name": "color-thief-jimp",
   "version": "2.0.1",
-  "private": true,
-  "author": {
-    "name": "Lokesh Dhakar",
-    "email": "lokesh.dhakar@gmail.com",
-    "url": "http://lokeshdhakar.com/"
-  },
-  "contributors": [
-    "Jean-Matthieu DECHRISTÉ"
-  ],
+  "private": false,
+  "author": "Jean-Matthieu DECHRISTÉ",
   "description": "Get the dominant color or color palette from an image with NodeJs and Jimp.",
   "keywords": [
     "color",

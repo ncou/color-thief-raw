@@ -43,3 +43,7 @@ var palette = ColorThief.getPalette(sourceImage, 8);
 ### 2016-02-26
 First release.
 
+## Credits
+Source code based on [color-thief](https://github.com/lokesh/color-thief/) ([MIT license](https://raw.githubusercontent.com/lokesh/color-thief/master/LICENSE))
+by Lokesh Dhakar
+lokeshdhakar.com
