@@ -3,6 +3,17 @@
 A script for grabbing the color palette from an image. Uses Javascript and the [Jimp](https://github.com/oliver-moran/jimp) to make it happen.
 This fork does NOT use canvas, and is can only used with NodeJs.
 
+## Install NodeJs
+
+Install the module via npm
+```bash
+npm install color-thief --save
+```
+
+And use it:
+```js
+var ColorThief = require('color-thief-jimp');
+```
 
 ## How to use
 
@@ -31,3 +42,4 @@ var palette = ColorThief.getPalette(sourceImage, 8);
 
 ### 2016-02-26
 First release.
+
