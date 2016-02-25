@@ -1,6 +1,7 @@
 /*!
  * Color Thief v2.0
  * by Lokesh Dhakar - http://www.lokeshdhakar.com
+ * Adapted for Jimp by Jean-Matthieu Dechristé
  *
  * Thanks
  * ------
@@ -12,49 +13,11 @@
  * -------
  * Copyright 2011, 2015 Lokesh Dhakar
  * Released under the MIT license
- * https://raw.githubusercontent.com/lokesh/color-thief/master/LICENSE
+ * https://raw.githubusercontent.com/jeanmatthieud/color-thief-jimp/master/LICENSE
  *
  */
 
-
-/*
-  CanvasImage Class
-  Class that wraps the html image element and canvas.
-  It also simplifies some of the canvas context manipulation
-  with a set of helper functions.
-*/
-var CanvasImage = function (image) {
-    this.canvas  = document.createElement('canvas');
-    this.context = this.canvas.getContext('2d');
-
-    document.body.appendChild(this.canvas);
-
-    this.width  = this.canvas.width  = image.width;
-    this.height = this.canvas.height = image.height;
-
-    this.context.drawImage(image, 0, 0, this.width, this.height);
-};
-
-CanvasImage.prototype.clear = function () {
-    this.context.clearRect(0, 0, this.width, this.height);
-};
-
-CanvasImage.prototype.update = function (imageData) {
-    this.context.putImageData(imageData, 0, 0);
-};
-
-CanvasImage.prototype.getPixelCount = function () {
-    return this.width * this.height;
-};
-
-CanvasImage.prototype.getImageData = function () {
-    return this.context.getImageData(0, 0, this.width, this.height);
-};
-
-CanvasImage.prototype.removeCanvas = function () {
-    this.canvas.parentNode.removeChild(this.canvas);
-};
-
+var Jimp = require('Jimp');
 
 var ColorThief = function () {};
 
@@ -77,7 +40,6 @@ ColorThief.prototype.getColor = function(sourceImage, quality) {
     return dominantColor;
 };
 
-
 /*
  * getPalette(sourceImage[, colorCount, quality])
  * returns array[ {r: num, g: num, b: num}, {r: num, g: num, b: num}, ...]
@@ -97,18 +59,17 @@ ColorThief.prototype.getColor = function(sourceImage, quality) {
  */
 ColorThief.prototype.getPalette = function(sourceImage, colorCount, quality) {
 
-    if (typeof colorCount === 'undefined') {
+    if (typeof colorCount === undefined) {
         colorCount = 10;
     }
-    if (typeof quality === 'undefined' || quality < 1) {
+    if (typeof quality === undefined || quality < 1) {
         quality = 10;
     }
 
-    // Create custom CanvasImage object
-    var image      = new CanvasImage(sourceImage);
-    var imageData  = image.getImageData();
+    var image      = sourceImage.clone();
+    var imageData  = image.bitmap;
     var pixels     = imageData.data;
-    var pixelCount = image.getPixelCount();
+    var pixelCount = imageData.width * imageData.height;
 
     // Store the RGB values in an array format suitable for quantize function
     var pixelArray = [];
@@ -132,12 +93,56 @@ ColorThief.prototype.getPalette = function(sourceImage, colorCount, quality) {
     var palette = cmap? cmap.palette() : null;
 
     // Clean up
-    image.removeCanvas();
+    image = null;
 
     return palette;
 };
 
+/*
+ * getColor(sourceImage[, quality])
+ * returns the color as string, in hexadecimal format (RRGGBB)
+ *
+ * Use the median cut algorithm provided by quantize.js to cluster similar
+ * colors and return the base color from the largest cluster.
+ *
+ * Quality is an optional argument. It needs to be an integer. 1 is the highest quality settings.
+ * 10 is the default. There is a trade-off between quality and speed. The bigger the number, the
+ * faster a color will be returned but the greater the likelihood that it will not be the visually
+ * most dominant color.
+ *
+ * */
+ColorThief.prototype.getColorHex = function(sourceImage, quality) {
+    var paletteHex    = this.getPaletteHex(sourceImage, 5, quality);
+    var dominantColor = paletteHex[0];
+    return dominantColor;
+};
 
+/*
+ * getPalette(sourceImage[, colorCount, quality])
+ * returns array[ "RRGGBB", "RRGGBB", ...]
+ *
+ * Use the median cut algorithm provided by quantize.js to cluster similar colors.
+ *
+ * colorCount determines the size of the palette; the number of colors returned. If not set, it
+ * defaults to 10.
+ *
+ * BUGGY: Function does not always return the requested amount of colors. It can be +/- 2.
+ *
+ * quality is an optional argument. It needs to be an integer. 1 is the highest quality settings.
+ * 10 is the default. There is a trade-off between quality and speed. The bigger the number, the
+ * faster the palette generation but the greater the likelihood that colors will be missed.
+ *
+ *
+ */
+ColorThief.prototype.getPaletteHex = function(sourceImage, colorCount, quality) {
+    var palette = this.getPalette(sourceImage, colorCount, quality);
+    return palette.map(function (colorRgb) {
+        var colorInt = Jimp.rgbaToInt(colorRgb[0], colorRgb[1], colorRgb[2], 255);
+        return colorInt.toString(16).substring(0, 6);
+    });
+};
+
+module.exports = new ColorThief();
 
 
 /*!

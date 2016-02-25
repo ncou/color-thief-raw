@@ -1,5 +1,5 @@
 {
-  "name": "color-thief",
+  "name": "color-thief-jimp",
   "version": "2.0.1",
   "private": true,
   "author": {
@@ -7,7 +7,10 @@
     "email": "lokesh.dhakar@gmail.com",
     "url": "http://lokeshdhakar.com/"
   },
-  "description": "Get the dominant color or color palette from an image.",
+  "contributors": [
+    "Jean-Matthieu DECHRISTÉ"
+  ],
+  "description": "Get the dominant color or color palette from an image with NodeJs and Jimp.",
   "keywords": [
     "color",
     "palette",
@@ -15,30 +18,29 @@
     "image",
     "picture",
     "photo",
-    "canvas"
+    "jimp"
   ],
-  "homepage": "http://lokeshdhakar.com/projects/color-thief/",
+  "homepage": "https://github.com/jeanmatthieud/color-thief-jimp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lokesh/color-thief.git"
+    "url": "https://github.com/jeanmatthieud/color-thief-jimp.git"
   },
   "bugs": {
-    "url": "https://github.com/lokesh/color-thief/issues"
+    "url": "https://github.com/jeanmatthieud/color-thief-jimp/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.githubusercontent.com/lokesh/color-thief/master/LICENSE/"
+      "url": "https://raw.githubusercontent.com/jeanmatthieud/color-thief-jimp/master/LICENSE/"
     }
   ],
   "main": "dist/color-thief.min.js",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-compass": "^0.7.2",
-    "grunt-contrib-watch": "^0.5.3",
-    "grunt-contrib-connect": "^0.7.1",
-    "grunt-ftp-deploy": "^0.1.1",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-jshint": "~0.9.2"
+  },
+  "dependencies": {
+    "jimp": "^0.2.21"
   }
 }

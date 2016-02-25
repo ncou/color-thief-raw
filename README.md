@@ -1,51 +1,38 @@
-#Color Thief
+# Color Thief with Jimp for NodeJs
 
-A script for grabbing the color palette from an image. Uses Javascript and the canvas tag to make it happen.
+A script for grabbing the color palette from an image. Uses Javascript and the [Jimp](https://github.com/oliver-moran/jimp) to make it happen.
+This fork does NOT use canvas, and is can only used with NodeJs.
 
 [See a Demo](http://lokeshdhakar.com/projects/color-thief) | [Read more on my blog](http://lokeshdhakar.com/color-thief)
 
 
-##How to use
+## How to use
 
-###Get the dominant color from an image
+### Get the dominant color from an image
 ```js
-var colorThief = new ColorThief();
-colorThief.getColor(sourceImage);
+var ColorThief = require('ColorThief');
+
+// getColor(sourceImage[, quality])
+var dominantColor = ColorThief.getColor(sourceImage);
+// dominantColor = [intRed, intGreen, intBlue]
 ```
 
 ```js
-getColor(sourceImage[, quality])
 returns {r: num, g: num, b: num}
 ```
 
-###Build a color palette from an image
+### Build a color palette from an image
 
 In this example, we build an 8 color palette.
 
 ```js
-var colorThief = new ColorThief();
-colorThief.getPalette(sourceImage, 8);
-```
+var ColorThief = require('ColorThief');
 
-```js
-getPalette(sourceImage[, colorCount, quality])
-returns [ [num, num, num], [num, num, num], ... ]
+// getPalette(sourceImage[, colorCount, quality])
+var palette = ColorThief.getPalette(sourceImage, 8);
+// palette = [ [intRed, intGreen, intBlue], [intRed, intGreen, intBlue], ... ]
 ```
-
 
 ## Changelog
 
-### v2.0.1 - 2015-10-05
-
-- [Fix] Remove left-over references to Creative Commons License. MIT all-around.
-- [Fix] MMCQ lib issues [#16](https://github.com/lokesh/color-thief/pull/16) by @nobodypb
-- [Fix] Incorrect bower.json main property path. [#37](https://github.com/lokesh/color-thief/pull/37) by @chellem, @joscha, @dkushner
-- [Fix] Quality less than 1 causes infinite loop [#33](https://github.com/lokesh/color-thief/pull/33) by @nteike
-- [Fix] MMCQ.quantize(...) can return false or undefined thus breaking the application (#55)[https://github.com/lokesh/color-thief/pull/55] by @mhahmadi
-- [Remove] Drop version number from bower.json [#70](https://github.com/lokesh/color-thief/pull/70) by @kkirsche
-
-### v2.0.0 - 2013-06-23
-
-- Embed quantize into color thief file
-- Strip out jQuery requirement
-- Credit those who helped with edits - Nathan Spady for drag and drop support.
+### TBD
