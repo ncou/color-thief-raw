@@ -8,7 +8,7 @@ This fork does NOT use canvas, and is can only used with NodeJs.
 
 ### Get the dominant color from an image
 ```js
-var ColorThief = require('ColorThief');
+var ColorThief = require('color-thief-jimp');
 
 // getColor(sourceImage[, quality])
 var dominantColor = ColorThief.getColor(sourceImage);
@@ -20,7 +20,7 @@ var dominantColor = ColorThief.getColor(sourceImage);
 In this example, we build an 8 color palette.
 
 ```js
-var ColorThief = require('ColorThief');
+var ColorThief = require('color-thief-jimp');
 
 // getPalette(sourceImage[, colorCount, quality])
 var palette = ColorThief.getPalette(sourceImage, 8);
