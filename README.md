@@ -7,7 +7,7 @@ This fork does NOT use canvas, and is can only used with NodeJs.
 
 Install the module via npm
 ```bash
-npm install color-thief --save
+npm install color-thief-jimp --save
 ```
 
 And use it:
