@@ -59,14 +59,14 @@ ColorThief.prototype.getColor = function(sourceImage, quality) {
  */
 ColorThief.prototype.getPalette = function(sourceImage, colorCount, quality) {
 
-    if (typeof colorCount === undefined) {
+    if (typeof colorCount === 'undefined') {
         colorCount = 10;
     }
-    if (typeof quality === undefined || quality < 1) {
+    if (typeof quality === 'undefined' || quality < 1) {
         quality = 10;
     }
 
-    var image      = sourceImage.clone();
+    var image      = sourceImage;
     var imageData  = image.bitmap;
     var pixels     = imageData.data;
     var pixelCount = imageData.width * imageData.height;
@@ -99,7 +99,7 @@ ColorThief.prototype.getPalette = function(sourceImage, colorCount, quality) {
 };
 
 /*
- * getColor(sourceImage[, quality])
+ * getColorHex(sourceImage[, quality])
  * returns the color as string, in hexadecimal format (RRGGBB)
  *
  * Use the median cut algorithm provided by quantize.js to cluster similar
@@ -118,7 +118,7 @@ ColorThief.prototype.getColorHex = function(sourceImage, quality) {
 };
 
 /*
- * getPalette(sourceImage[, colorCount, quality])
+ * getPaletteHex(sourceImage[, colorCount, quality])
  * returns array[ "RRGGBB", "RRGGBB", ...]
  *
  * Use the median cut algorithm provided by quantize.js to cluster similar colors.
