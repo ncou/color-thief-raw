@@ -17,7 +17,7 @@
  *
  */
 
-var Jimp = require('Jimp');
+var Jimp = require('jimp');
 
 var ColorThief = function () {};
 
