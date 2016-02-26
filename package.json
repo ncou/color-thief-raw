@@ -1,6 +1,6 @@
 {
   "name": "color-thief-jimp",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": false,
   "author": "Jean-Matthieu DECHRISTÉ",
   "description": "Get the dominant color or color palette from an image with NodeJs and Jimp.",
