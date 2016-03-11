@@ -1,15 +1,12 @@
-# Color Thief with Jimp for NodeJs
+# Color Thief for NodeJs
 
-A script for grabbing the color palette from an image. Uses Javascript and the [Jimp](https://github.com/oliver-moran/jimp) to make it happen.
-This fork does NOT use canvas, and is can only used with NodeJs.
-
-Note: This fork allows white color.
+This fork allows white color and uses 4 channels raw data for input
 
 ## How to use
 
 ### Get the dominant color from an image
 ```js
-var ColorThief = require('color-thief-jimp');
+var ColorThief = require('color-thief-raw');
 
 // getColor(sourceImage[, quality])
 var dominantColor = ColorThief.getColor(sourceImage);
@@ -21,7 +18,7 @@ var dominantColor = ColorThief.getColor(sourceImage);
 In this example, we build an 8 color palette.
 
 ```js
-var ColorThief = require('color-thief-jimp');
+var ColorThief = require('color-thief-raw');
 
 // getPalette(sourceImage[, colorCount, quality])
 var palette = ColorThief.getPalette(sourceImage, 8);
@@ -34,6 +31,11 @@ var palette = ColorThief.getPalette(sourceImage, 8);
 First release.
 
 ## Credits
-Source code based on [color-thief](https://github.com/lokesh/color-thief/) ([MIT license](https://raw.githubusercontent.com/lokesh/color-thief/master/LICENSE))
+Source code based on
+
+[color-thief](https://github.com/lokesh/color-thief/) ([MIT license](https://raw.githubusercontent.com/lokesh/color-thief/master/LICENSE))
 by Lokesh Dhakar
 lokeshdhakar.com
+
+[color-thief-jimp](https://github.com/jeanmatthieud/color-thief-jimp) ([MIT license](https://raw.githubusercontent.com/jeanmatthieud/color-thief-jimp/master/LICENSE))
+by Jean-Matthieu DECHRISTÉ
