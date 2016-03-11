@@ -33,11 +33,6 @@ var palette = ColorThief.getPalette(sourceImage, 8);
 // palette = [ [intRed, intGreen, intBlue], [intRed, intGreen, intBlue], ... ]
 ```
 
-## Changelog
-
-### 2016-02-26
-First release.
-
 ## Credits
 Source code based on
 
