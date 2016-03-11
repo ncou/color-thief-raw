@@ -12,18 +12,18 @@
     "picture",
     "photo"
   ],
-  "homepage": "https://github.com/nsmag/color-thief",
+  "homepage": "https://github.com/nsmag/color-thief-raw",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nsmag/color-thief.git"
+    "url": "https://github.com/nsmag/color-thief-raw.git"
   },
   "bugs": {
-    "url": "https://github.com/nsmag/color-thief/issues"
+    "url": "https://github.com/nsmag/color-thief-raw/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.githubusercontent.com/nsmag/color-thief/master/LICENSE/"
+      "url": "https://raw.githubusercontent.com/nsmag/color-thief-raw/master/LICENSE/"
     }
   ],
   "main": "src/color-thief.js"
