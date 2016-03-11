@@ -9,6 +9,13 @@ This fork allows white color and uses 4 channels raw data for input
 var ColorThief = require('color-thief-raw');
 
 // getColor(sourceImage[, quality])
+// sourceImage = {
+//   data: [...], // 4 channels raw data
+//   info: {
+//     width: imageWidth,
+//     height: imageHeight
+//   }
+// }
 var dominantColor = ColorThief.getColor(sourceImage);
 // dominantColor = [intRed, intGreen, intBlue]
 ```
