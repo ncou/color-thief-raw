@@ -1,6 +1,6 @@
 # Color Thief for NodeJs
 
-This fork allows white color and uses 4 channels raw data for input
+This fork allows white color and uses 3 or 4 channels raw data for input
 
 ## How to use
 
@@ -10,10 +10,11 @@ var ColorThief = require('color-thief-raw');
 
 // getColor(sourceImage[, quality])
 // sourceImage = {
-//   data: [...], // 4 channels raw data
+//   data: [...], // 3 or 4 channels raw data
 //   info: {
 //     width: imageWidth,
-//     height: imageHeight
+//     height: imageHeight,
+//     channels: numberOfChannels
 //   }
 // }
 var dominantColor = ColorThief.getColor(sourceImage);
