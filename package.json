@@ -1,34 +1,30 @@
 {
-  "name": "color-thief-jimp",
-  "version": "2.0.2",
+  "name": "color-thief-raw",
+  "version": "1.0.0",
   "private": false,
-  "author": "Jean-Matthieu DECHRISTÉ",
-  "description": "Get the dominant color or color palette from an image with NodeJs and Jimp.",
+  "author": "Natthakit Susanthitanon",
+  "description": "Get the dominant color or color palette from an image with NodeJs.",
   "keywords": [
     "color",
     "palette",
     "sampling",
     "image",
     "picture",
-    "photo",
-    "jimp"
+    "photo"
   ],
-  "homepage": "https://github.com/jeanmatthieud/color-thief-jimp",
+  "homepage": "https://github.com/nsmag/color-thief",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeanmatthieud/color-thief-jimp.git"
+    "url": "https://github.com/nsmag/color-thief.git"
   },
   "bugs": {
-    "url": "https://github.com/jeanmatthieud/color-thief-jimp/issues"
+    "url": "https://github.com/nsmag/color-thief/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.githubusercontent.com/jeanmatthieud/color-thief-jimp/master/LICENSE/"
+      "url": "https://raw.githubusercontent.com/nsmag/color-thief/master/LICENSE/"
     }
   ],
-  "main": "src/color-thief.js",
-  "dependencies": {
-    "jimp": "^0.2.21"
-  }
+  "main": "src/color-thief.js"
 }
